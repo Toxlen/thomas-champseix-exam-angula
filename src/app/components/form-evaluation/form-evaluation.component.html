@@ -1,0 +1,24 @@
+<h2>Formulaire d'évaluation :</h2>
+
+<form #form="ngForm" (ngSubmit)="save(form)">
+  <div>
+    evaluateur :
+    <input type="text" name="evaluateur" #evaluateur="ngModel" [(ngModel)]="evaluateurInput" minlength="1" maxlength="50" required>
+    <span style="color: red" *ngIf="!evaluateur.valid && evaluateur.errors?.['required']">Le champ est requis</span>
+    <span style="color: red" *ngIf="!evaluateur.valid && evaluateur.errors?.['maxlength']">Le champ est trop long</span>
+  </div>
+  <div>
+    commentaire :
+    <input type="text" name="commentaire" #commentaire="ngModel" [(ngModel)]="commentaireInput" maxlength="255" required>
+    <span style="color: red" *ngIf="!commentaire.valid && commentaire.errors?.['required']">Le champ est requis</span>
+    <span style="color: red" *ngIf="!commentaire.valid && commentaire.errors?.['maxlength']">Le champ est trop long</span>
+  </div>
+  <div>
+    note :
+    <input type="text" name="note" #note="ngModel" [(ngModel)]="noteInput" min="0" max="3" required>
+    <span style="color: red" *ngIf="!note.valid && note.errors?.['required']">Le champ est requis</span>
+    <span style="color: red" *ngIf="!note.valid && note.errors?.['max']">Le champ est trop grand</span>
+    <span style="color: red" *ngIf="!note.valid && note.errors?.['min']">Le champ est trop petit</span>
+  </div>
+  <button type="submit">Valider</button>
+</form>

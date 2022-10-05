@@ -1,0 +1,12 @@
+<a routerLink="/restaurants">Retour à la page des restaurants</a>
+
+<p *ngIf="!restaurant">Le restaurant n'existe pas !</p>
+<div *ngIf="restaurant">
+  <h2>{{restaurant.nom}} :</h2>
+
+  <p>Adresse : {{restaurant.adresse}} </p>
+
+  <app-table-evaluation [evaluations]="restaurant.evaluations" (supprimerEvaluation)="supprimerEvaluation($event)"></app-table-evaluation>
+  <app-form-evaluation (newEvaluation)="evaluationFromForm($event)"></app-form-evaluation>
+  <app-form-restaurant [nomInput]="restaurant.nom" [adresseInput]="restaurant.adresse" (outRestaurant)="modifRestaurant($event)"></app-form-restaurant>
+</div>

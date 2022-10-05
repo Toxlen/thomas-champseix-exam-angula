@@ -1,0 +1,5 @@
+<h2>Restaurants</h2>
+
+<app-table-restaurant [restaurants]="restaurants" (gotoDetail)="gotoDetail($event)"></app-table-restaurant>
+
+<app-form-restaurant (outRestaurant)="retaurantFromForm($event)"></app-form-restaurant>
